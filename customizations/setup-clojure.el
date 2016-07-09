@@ -29,14 +29,6 @@
             (define-clojure-indent (fact 1))
             (define-clojure-indent (facts 1))))
 
-
-;; Refactoring
-(add-hook 'clojure-mode-hook
-  (lambda ()
-    (clj-refactor-mode 1)
-    (yas-minor-mode 1)
-    (cljr-add-keybindings-with-prefix "C-c C-m"))
-
 ;;;;
 ;; Cider
 ;;;;
@@ -81,7 +73,6 @@
     (cider-interactive-eval (format "(println '(def server (%s/start))) (println 'server)" ns))
     (cider-interactive-eval (format "(def server (%s/start)) (println server)" ns))))
 
-
 (defun cider-refresh ()
   (interactive)
   (cider-interactive-eval (format "(user/reset)")))
@@ -97,3 +88,11 @@
      (define-key clojure-mode-map (kbd "C-c u") 'cider-user-ns)
      (define-key cider-mode-map (kbd "C-c u") 'cider-user-ns)))
 
+;; Refactoring
+(setq cljr-warn-on-eval nil)
+
+;(add-hook 'clojure-mode-hook
+;  (lambda ()
+;    (clj-refactor-mode 1)
+;    (yas-minor-mode 1)
+;    (cljr-add-keybindings-with-prefix "C-c C-m"))
