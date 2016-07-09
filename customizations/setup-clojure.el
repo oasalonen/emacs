@@ -30,6 +30,13 @@
             (define-clojure-indent (facts 1))))
 
 
+;; Refactoring
+(add-hook 'clojure-mode-hook
+  (lambda ()
+    (clj-refactor-mode 1)
+    (yas-minor-mode 1)
+    (cljr-add-keybindings-with-prefix "C-c C-m"))
+
 ;;;;
 ;; Cider
 ;;;;
@@ -89,3 +96,4 @@
      (define-key clojure-mode-map (kbd "C-M-r") 'cider-refresh)
      (define-key clojure-mode-map (kbd "C-c u") 'cider-user-ns)
      (define-key cider-mode-map (kbd "C-c u") 'cider-user-ns)))
+
